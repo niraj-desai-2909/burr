@@ -1,6 +1,6 @@
-=========
-Why Burr?
-=========
+================
+Why Apache Burr?
+================
 
 Why do you need a state machine for your applications? Won't the normal programming constructs suffice?
 
@@ -15,7 +15,7 @@ Why do you need a state machine for your applications? Won't the normal programm
 You can always patch together various frameworks or build it all yourself, but at that point you're going to be spending a lot of time on tasks that
 are not related to the core value proposition of your software.
 
-**Burr was built to make these all easier.**
+**Apache Burr was built to make these all easier.**
 
 By modeling your application as a state machine of simple python constructs you can have the best of both worlds.
 Bring in whatever infrastructure/tooling you want and get all of the above. Burr is meant to start off as an extremely lightweight tool to

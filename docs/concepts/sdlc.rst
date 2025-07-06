@@ -17,7 +17,7 @@ and you will use one to feed into the other, etc.
 
 Walking through the diagram the SDLC looks like this:
 
-1. Write code with Burr.
+1. Write code with ApacheBurr.
 2. Use Burr's integrated observability, and trace all parts of your application.
 3. With the data collected, you can: (1) annotate what was captured and export it, or (2) create a pytest fixture with it.
 4. Create a data set from the annotated data or by running tests.

@@ -2,7 +2,7 @@
 Concepts
 ====================
 
-Overview of the concepts -- read these to get a mental model for how Burr works.
+Overview of the concepts -- read these to get a mental model for how ApacheBurr works.
 
 .. _concepts:
 

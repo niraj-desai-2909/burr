@@ -39,7 +39,7 @@ html_css_files = [
 
 html_title = "Burr"
 html_theme_options = {
-    "source_repository": "https://github.com/dagworks-inc/burr",
+    "source_repository": "https://github.com/apache/burr",
     "source_branch": "main",
     "source_directory": "docs/",
     "light_css_variables": {

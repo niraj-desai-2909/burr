@@ -13,7 +13,7 @@ We provide two implementations of this idea: with [Hamilton](https://github.com/
 
 ## With Hamilton
 
-<a target="_blank" href="https://colab.research.google.com/github/dagworks-inc/burr/blob/main/examples/multi-agent-collaboration/hamilton/notebook.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/apache/burr/blob/main/examples/multi-agent-collaboration/hamilton/notebook.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -21,6 +21,6 @@ We provide two implementations of this idea: with [Hamilton](https://github.com/
 
 ## With LangChain Expression Language (LCEL)
 
-<a target="_blank" href="https://colab.research.google.com/github/dagworks-inc/burr/blob/main/examples/multi-agent-collaboration/lcel/notebook.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/apache/burr/blob/main/examples/multi-agent-collaboration/lcel/notebook.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>

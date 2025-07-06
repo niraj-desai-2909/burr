@@ -6,7 +6,7 @@ Actions
 
 .. note::
 
-    Actions are the core building block of Burr. They read from state and write to state.
+    Actions are the core building block of Apache Burr. They read from state and write to state.
     They can be synchronous and asynchonous, and have both a ``sync`` and ``async`` API.
     There are both function and class-based APIs.
 

@@ -8,7 +8,7 @@ Hooks
     Hooks allow you to customize every aspect of Burr's execution, plugging in whatever tooling,
     observability framework, or debugging tool you need.
 
-Burr has a system of lifecycle adapters (adapted from the similar `Hamilton <https://github.com/dagworks-inc/hamilton>`_ concept), which allow you to run tooling before and after
+Apache Burr has a system of lifecycle adapters (adapted from the similar `Hamilton <https://github.com/dagworks-inc/hamilton>`_ concept), which allow you to run tooling before and after
 various places in a node's execution. For instance, you could:
 
 1. Log every step as a trace in datadog

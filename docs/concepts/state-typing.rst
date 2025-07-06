@@ -6,7 +6,7 @@ Typing State
 
 .. note::
 
-    Burr allows you to specify types for your state. This enables more self-documenting, easy-to-write actions,
+    Apach Burr allows you to specify types for your state. This enables more self-documenting, easy-to-write actions,
     allows you to type your entire application object for downstream consumption, and provides a way to inspect
     the state of your application prior to execution (for use by a web-server/other typing system). This is done
     through the use of pydantic schemas.
@@ -14,7 +14,7 @@ Typing State
 For a quick-start guide, see the `example <https://github.com/DAGWorks-Inc/burr/tree/main/examples/typed-state>`_
 
 
-Burr has two approaches to specifying a schema for a state. These can work together as long as they specify clashing state:
+Apache Burr has two approaches to specifying a schema for a state. These can work together as long as they specify clashing state:
 
 1. Application-level typing
 2. Action-level typing

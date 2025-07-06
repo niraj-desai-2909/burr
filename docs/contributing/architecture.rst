@@ -2,7 +2,7 @@
 Architecture
 ============
 
-Some notes on the design/implementation of Burr:
+Some notes on the design/implementation of Apache Burr:
 
 --------------
 Python Package
@@ -12,7 +12,7 @@ Dependencies
 ------------
 A note on dependencies:
 
-- The core Burr library will have zero dependencies. Currently its only dependency in hamilton, but that will be removed in the future.
+- The core Apache Burr library will have zero dependencies. Currently its only dependency in hamilton, but that will be removed in the future.
 - Any other extensions (the server, the CLI, etc...) are allowed dependencies -- specify these as install targets in ``pyproject.toml``
 - The dependencies/plugins will live alongside the core library, and contain guards to ensure that the right libraries are installed. You can do this with ``burr.integrations.base.require_plugins``
 

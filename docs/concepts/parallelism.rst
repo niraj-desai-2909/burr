@@ -4,7 +4,7 @@
 Parallelism
 ===========
 
-Burr can run multiple actions in parallel. Each parallel branch can contain one or more actions, and different branches can have different actions. This is useful when:
+Apache Burr can run multiple actions in parallel. Each parallel branch can contain one or more actions, and different branches can have different actions. This is useful when:
 
 - Trying different prompts with an LLM
 - Trying a prompt with different LLMs
@@ -19,7 +19,7 @@ This section shows how to enable parallelism and presents use cases.
 
 TL;DR
 =====
-Burr provides a high-level and a low-level API for parallelism. The high-level API supports many different patterns and should be sufficient for most use cases.
+Apache Burr provides a high-level and a low-level API for parallelism. The high-level API supports many different patterns and should be sufficient for most use cases.
 
 - ``MapStates``: Apply an action to multiple values in state then reduce the action results (e.g., different prompts to the same LLM).
 - ``MapActions``: Apply different actions to the same state value then reduce the actions result (e.g., same prompt to different LLMs).
@@ -34,7 +34,7 @@ With the low-level API, you can manually determine how parallel actions or subgr
 Overview
 ========
 
-Burr allows you to define parallel actions by expanding a single action into multiple individual actions or subgraphs which
+Apache Burr allows you to define parallel actions by expanding a single action into multiple individual actions or subgraphs which
 will execute them all and joining the results. This is a simple `map-reduce <https://en.wikipedia.org/wiki/MapReduce>`_ pattern.
 
 Currently, Burr has two separate APIs for building parallel applications -- higher level (use this first), and lower level.

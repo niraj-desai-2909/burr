@@ -6,14 +6,14 @@ State Persistence
 
 .. note::
 
-    Burr comes with a core set of APIs that enable state `persistence` -- the ability
+    Apache Burr comes with a core set of APIs that enable state `persistence` -- the ability
     to save and load state automatically from a database. This enables you to launch an application,
     pause it, and restart where you left off. The API is customizable, and works with any database you want.
 
 TL;DR
 -----
 
-Burr provides an API to save and load state from a database. This enables you to pause and restart applications where you left off.
+Apache Burr provides an API to save and load state from a database. This enables you to pause and restart applications where you left off.
 You can implement a custom state persister or use one of the pre-built ones. You can fork state from a previous run to enable debugging/loading.
 
 

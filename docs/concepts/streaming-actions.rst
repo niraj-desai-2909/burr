@@ -5,7 +5,7 @@ Streaming Actions
 
 .. note::
 
-    Burr actions can stream results! This enables you to display results to the user as
+    Apache Burr actions can stream results! This enables you to display results to the user as
     tokens are streamed in.
 
 

@@ -2,7 +2,7 @@
 Installation
 =============
 
-Burr itself requires no dependencies. Every *extra*/*plugin* is an additional install target.
+Apache Burr itself requires no dependencies. Every *extra*/*plugin* is an additional install target.
 
 We recommend you start with installing the ``start`` target -- this has dependencies necessary to track burr through the UI,
 along with a fully built server.

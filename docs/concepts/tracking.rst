@@ -1,12 +1,12 @@
 .. _tracking:
 
-=============
-Tracking Burr
-=============
+====================
+Tracking Apache Burr
+====================
 
 .. note::
 
-    Burr's telemetry system is built in and easy to integrate. It allows you to understand
+    Apache Burr's telemetry system is built in and easy to integrate. It allows you to understand
     the flow of your application, and watch it make decisions in real time. You can run it
     with sample projects by running ``burr`` in the terminal after ``pip install "burr[start]"``.
 
@@ -92,10 +92,10 @@ run it with the following command:
 This will start a server on port 7241, and open up a browser window with the UI for you to explore.
 
 
-Launch Burr UI from a notebook
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Launch Apache Burr UI from a notebook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can launch the Burr UI from a notebook or Google Colab using the ``%burr_ui`` "IPython magic".
+You can launch the Apach Burr UI from a notebook or Google Colab using the ``%burr_ui`` "IPython magic".
 This will print the URL to access the Burr UI web app.
 
 .. code-block:: python

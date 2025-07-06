@@ -4,7 +4,7 @@
 Recursive Applications
 ======================
 
-Burr supports sub-applications. E.G. running Burr within Burr.
+ApacheBurr supports sub-applications. E.G. running Burr within Burr.
 Currently this capability is only done with tracking (linking applications),
 but we are actively working on building first-level constructs that allow this.
 
@@ -20,7 +20,7 @@ And so on. These can be arbitrarily complex and nested, allowing agents consisti
 .. image:: ../_static/meme.png
     :align: center
 
-You can find an example `here <https://github.com/dagworks-inc/burr/tree/main/examples/recursive>`_.
+You can find an example `here <https://github.com/apache/burr/tree/main/examples/recursive>`_.
 
 --------
 Tracking

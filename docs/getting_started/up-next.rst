@@ -36,7 +36,7 @@ For the next examples you'll need the repository cloned:
 
 .. code-block:: bash
 
-    git clone https://github.com/dagworks-inc/burr && cd burr
+    git clone https://github.com/apache/burr && cd burr
 
 -------------------------------
 Simple Counter ``demo_counter``
