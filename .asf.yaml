@@ -54,7 +54,7 @@ github:
 
 notifications:
   commits:              commits@burr.apache.org
-  issues:               dev@hamilton.apache.org
-  pullrequests:         dev@hamilton.apache.org
-  discussions:          dev@hamilton.apache.org
-  jobs:                 dev@hamilton.apache.org
+  issues:               dev@burr.apache.org
+  pullrequests:         dev@burr.apache.org
+  discussions:          dev@burr.apache.org
+  jobs:                 dev@burr.apache.org
