@@ -3,7 +3,7 @@
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: ApacheBurr
+   :caption: Apache Burr
 
    getting_started/index
    examples/index

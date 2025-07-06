@@ -1,6 +1,6 @@
-==============
-Burr
-==============
+========================
+Apache Burr (incubating)
+========================
 
 Welcome to Apache Burr's (incubating) documentation.
 

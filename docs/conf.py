@@ -50,7 +50,7 @@ html_css_files = [
     "testimonials.css",
 ]
 
-html_title = "Burr"
+html_title = "Apache Burr"
 html_theme_options = {
     "source_repository": "https://github.com/apache/burr",
     "source_branch": "main",
