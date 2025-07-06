@@ -5,23 +5,17 @@
 [![Discord](https://img.shields.io/badge/Join-Burr_Discord-7289DA?logo=discord)](https://discord.gg/6Zy2DwP4f3)
 [![Downloads](https://static.pepy.tech/badge/burr/month)](https://pepy.tech/project/burr)
 ![PyPI Downloads](https://static.pepy.tech/badge/burr)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/dagworks-inc/burr)](https://github.com/dagworks-inc/burr/pulse)
-[![X](https://img.shields.io/badge/follow-%40burr_framework-1DA1F2?logo=x&style=social)](https://twitter.com/burr_framework)
-<a target="_blank" href="https://linkedin.com/showcase/dagworks-inc" style="background:none">
-  <img src="https://img.shields.io/badge/DAGWorks-Follow-purple.svg?logo=linkedin" />
-</a>
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/apache/burr)](https://github.com/apache/burr/pulse)
+[![X](https://img.shields.io/badge/follow-%40burr_framework-1DA1F2?logo=x&style=social)](https://x.com/burr_framework)
 <a href="https://twitter.com/burr_framework" target="_blank">
   <img src="https://img.shields.io/badge/burr_framework-Follow-purple.svg?logo=X"/>
-</a>
-<a href="https://twitter.com/dagworks" target="_blank">
-  <img src="https://img.shields.io/badge/DAGWorks-Follow-purple.svg?logo=X"/>
 </a>
 
 </div>
 
-Burr makes it easy to develop applications that make decisions (chatbots, agents, simulations, etc...) from simple python building blocks.
+Apache Burr (incubating) makes it easy to develop applications that make decisions (chatbots, agents, simulations, etc...) from simple python building blocks.
 
-Burr works well for any application that uses LLMs, and can integrate with any of your favorite frameworks. Burr includes a UI that can track/monitor/trace your system in real time, along with
+Apache Burr works well for any application that uses LLMs, and can integrate with any of your favorite frameworks. Apache Burr includes a UI that can track/monitor/trace your system in real time, along with
 pluggable persisters (e.g. for memory) to save & load application state.
 
 Link to [documentation](https://burr.dagworks.io/). Quick (<3min) video intro [here](https://www.loom.com/share/a10f163428b942fea55db1a84b1140d8?sid=1512863b-f533-4a42-a2f3-95b13deb07c9).
@@ -43,7 +37,7 @@ Then run the UI server:
 burr
 ```
 
-This will open up Burr's telemetry UI. It comes loaded with some default data so you can click around.
+This will open up Apache Burr's telemetry UI. It comes loaded with some default data so you can click around.
 It also has a demo chat application to help demonstrate what the UI captures enabling you too see things changing in
 real-time. Hit the "Demos" side bar on the left and select `chatbot`. To chat it requires the `OPENAI_API_KEY`
 environment variable to be set, but you can still see how it works if you don't have an API key set.
@@ -51,7 +45,7 @@ environment variable to be set, but you can still see how it works if you don't 
 Next, start coding / running examples:
 
 ```bash
-git clone https://github.com/dagworks-inc/burr && cd burr/examples/hello-world-counter
+git clone https://github.com/apache/burr && cd burr/examples/hello-world-counter
 python application.py
 ```
 
@@ -60,12 +54,12 @@ See if you can find it.
 
 For more details see the [getting started guide](https://burr.dagworks.io/getting_started/simple-example/).
 
-## 🔩 How does Burr work?
+## 🔩 How does Apache Burr work?
 
-With Burr you express your application as a state machine (i.e. a graph/flowchart).
+With Apache Burr you express your application as a state machine (i.e. a graph/flowchart).
 You can (and should!) use it for anything in which you have to manage state, track complex decisions, add human feedback, or dictate an idempotent, self-persisting workflow.
 
-The core API is simple -- the Burr hello-world looks like this (plug in your own LLM, or copy from [the docs](https://burr.dagworks.io/getting_started/simple-example/#build-a-simple-chatbot>) for _gpt-X_)
+The core API is simple -- the Apache Burr hello-world looks like this (plug in your own LLM, or copy from [the docs](https://burr.dagworks.io/getting_started/simple-example/#build-a-simple-chatbot>) for _gpt-X_)
 
 ```python
 from burr.core import action, State, ApplicationBuilder
@@ -79,7 +73,7 @@ def human_input(state: State, prompt: str) -> State:
 @action(reads=["chat_history"], writes=["response", "chat_history"])
 def ai_response(state: State) -> State:
     # query the LLM however you want (or don't use an LLM, up to you...)
-    response = _query_llm(state["chat_history"]) # Burr doesn't care how you use LLMs!
+    response = _query_llm(state["chat_history"]) # Apache Burr doesn't care how you use LLMs!
     chat_item = {"role" : "system", "content" : response}
     return state.update(response=content).append(chat_history=chat_item)
 
@@ -97,33 +91,33 @@ app = (
 print("answer:", app.state["response"])
 ```
 
-Burr includes:
+Apache Burr includes:
 
 1. A (dependency-free) low-abstraction python library that enables you to build and manage state machines with simple python functions
 2. A UI you can use view execution telemetry for introspection and debugging
 3. A set of integrations to make it easier to persist state, connect to telemetry, and integrate with other systems
 
-![Burr at work](https://github.com/DAGWorks-Inc/burr/blob/main/chatbot.gif)
+![Apache Burr at work](https://github.com/apache/burr/blob/main/chatbot.gif)
 
-## 💻️ What can you do with Burr?
+## 💻️ What can you do with Apache Burr?
 
-Burr can be used to power a variety of applications, including:
+Apache Burr can be used to power a variety of applications, including:
 
-1. [A simple gpt-like chatbot](https://github.com/dagworks-inc/burr/tree/main/examples/multi-modal-chatbot)
-2. [A stateful RAG-based chatbot](https://github.com/dagworks-inc/burr/tree/main/examples/conversational-rag/simple_example)
-3. [An LLM-based adventure game](https://github.com/DAGWorks-Inc/burr/tree/main/examples/llm-adventure-game)
-4. [An interactive assistant for writing emails](https://github.com/DAGWorks-Inc/burr/tree/main/examples/email-assistant)
+1. [A simple gpt-like chatbot](https://github.com/apache/burr/tree/main/examples/multi-modal-chatbot)
+2. [A stateful RAG-based chatbot](https://github.com/apache/burr/tree/main/examples/conversational-rag/simple_example)
+3. [An LLM-based adventure game](https://github.com/apache/burr/tree/main/examples/llm-adventure-game)
+4. [An interactive assistant for writing emails](https://github.com/apache/burr/tree/main/examples/email-assistant)
 
-As well as a variety of (non-LLM) use-cases, including a time-series forecasting [simulation](https://github.com/DAGWorks-Inc/burr/tree/main/examples/simulation),
-and [hyperparameter tuning](https://github.com/DAGWorks-Inc/burr/tree/main/examples/ml-training).
+As well as a variety of (non-LLM) use-cases, including a time-series forecasting [simulation](https://github.com/apache/burr/tree/main/examples/simulation),
+and [hyperparameter tuning](https://github.com/apache/burr/tree/main/examples/ml-training).
 
 And a lot more!
 
 Using hooks and other integrations you can (a) integrate with any of your favorite vendors (LLM observability, storage, etc...), and
 (b) build custom actions that delegate to your favorite libraries (like [Hamilton](https://github.com/DAGWorks-Inc/hamilton)).
 
-Burr will _not_ tell you how to build your models, how to query APIs, or how to manage your data. It will help you tie all these together
-in a way that scales with your needs and makes following the logic of your system easy. Burr comes out of the box with a host of integrations
+Apache Burr will _not_ tell you how to build your models, how to query APIs, or how to manage your data. It will help you tie all these together
+in a way that scales with your needs and makes following the logic of your system easy. Apache Burr comes out of the box with a host of integrations
 including tooling to build a UI in streamlit and watch your state machine execute.
 
 ## 🏗 Start building
@@ -133,9 +127,9 @@ Then read through some of the concepts and write your own application!
 
 ## 📃 Comparison against common frameworks
 
-While Burr is attempting something (somewhat) unique, there are a variety of tools that occupy similar spaces:
+While Apache Burr is attempting something (somewhat) unique, there are a variety of tools that occupy similar spaces:
 
-| Criteria                                          | Burr | Langgraph | temporal | Langchain | Superagent | Hamilton |
+| Criteria                                          | Apache Burr | Langgraph | temporal | Langchain | Superagent | Hamilton |
 | ------------------------------------------------- | :--: | :-------: | :------: | :-------: | :--------: | :------: |
 | Explicitly models a state machine                 |  ✅  |    ✅     |    ❌    |    ❌     |     ❌     |    ❌    |
 | Framework-agnostic                                |  ✅  |    ✅     |    ✅    |    ✅     |     ❌     |    ✅    |
@@ -146,7 +140,7 @@ While Burr is attempting something (somewhat) unique, there are a variety of too
 
 ## 🌯 Why the name Burr?
 
-Burr is named after [Aaron Burr](https://en.wikipedia.org/wiki/Aaron_Burr), founding father, third VP of the United States, and murderer/arch-nemesis of [Alexander Hamilton](https://en.wikipedia.org/wiki/Alexander_Hamilton).
+Apache Burr is named after [Aaron Burr](https://en.wikipedia.org/wiki/Aaron_Burr), founding father, third VP of the United States, and murderer/arch-nemesis of [Alexander Hamilton](https://en.wikipedia.org/wiki/Alexander_Hamilton).
 What's the connection with Hamilton? This is [DAGWorks](www.dagworks.io)' second open-source library release after the [Hamilton library](https://github.com/dagworks-inc/hamilton)
 We imagine a world in which Burr and Hamilton lived in harmony and saw through their differences to better the union. We originally
 built Burr as a _harness_ to handle state between executions of Hamilton DAGs (because DAGs don't have cycles),
@@ -198,18 +192,16 @@ but realized that it has a wide array of applications and decided to release it 
 
 ## 🛣 Roadmap
 
-While Burr is stable and well-tested, we have quite a few tools/features on our roadmap!
-1. FastAPI integration + hosted deployment -- make it really easy to get Burr in an app in production without thinking about REST APIs
+While Apache Burr is stable and well-tested, we have quite a few tools/features on our roadmap!
+1. FastAPI integration + hosted deployment -- make it really easy to get Apache Burr in an app in production without thinking about REST APIs
 2. Various efficiency/usability improvements for the core library (see [planned capabilities](https://burr.dagworks.io/concepts/planned-capabilities/) for more details). This includes:
    1. First-class support for retries + exception management
    2. More integration with popular frameworks (LCEL, LLamaIndex, Hamilton, etc...)
    3. Capturing & surfacing extra metadata, e.g. annotations for particular point in time, that you can then pull out for fine-tuning, etc.
    4. Improvements to the pydantic-based typing system
 3. Tooling for hosted execution of state machines, integrating with your infrastructure (Ray, modal, FastAPI + EC2, etc...)
-4. Additional storage integrations. More integrations with technologies like MySQL, S3, etc. so you can run Burr on top of what you have available.
+4. Additional storage integrations. More integrations with technologies like MySQL, S3, etc. so you can run Apache Burr on top of what you have available.
 
-If you want to avoid self-hosting the above solutions we're building Burr Cloud. To let us know you're interested
-sign up [here](https://forms.gle/w9u2QKcPrztApRedA) for the waitlist to get access.
 
 ## 🤲 Contributing
 

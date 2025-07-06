@@ -1,6 +1,6 @@
 # ML Training
 
-This is a WIP! Please contribute back if you have ideas. You can track the associated issue [here](https://github.com/DAGWorks-Inc/burr/issues/138).
+This is a WIP! Please contribute back if you have ideas. You can track the associated issue [here](https://github.com/apache/burr/issues/138).
 
 A machine learning training system can easily be modeled as a state machine.
 

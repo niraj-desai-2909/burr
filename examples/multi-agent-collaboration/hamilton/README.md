@@ -8,7 +8,7 @@ With Hamilton the prompts can be found in the module [`func_agent.py`](func_agen
 
 The Hamilton code creates the following dataflow:
 
-![dataflow](https://github.com/DAGWorks-Inc/burr/assets/2328071/24822ee5-f05b-4fa4-95e7-daa23969cfff)
+![dataflow](https://github.com/apache/burr/assets/2328071/24822ee5-f05b-4fa4-95e7-daa23969cfff)
 
 
 # Tracing
@@ -33,7 +33,7 @@ export TAVILY_API_KEY=YOUR_KEY
 ```
 
 Run the notebook:
-<a target="_blank" href="https://colab.research.google.com/github/dagworks-inc/burr/blob/main/examples/multi-agent-collaboration/hamilton/notebook.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/apache/burr/blob/main/examples/multi-agent-collaboration/hamilton/notebook.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 or do it manually:

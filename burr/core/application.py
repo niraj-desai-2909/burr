@@ -184,9 +184,9 @@ def _state_update(state_to_modify: State, modified_state: State) -> State:
 
     This is suboptimal -- we should not be observing the state, we should be using the state commands and layering in deltas.
     That said, we currently eagerly evaluate the state at all operations, which means we have to do it this way. See
-    https://github.com/DAGWorks-Inc/burr/issues/33 for a more detailed plan.
+    https://github.com/apache/burr/issues/33 for a more detailed plan.
 
-    This function was written to solve this issue: https://github.com/DAGWorks-Inc/burr/issues/28.
+    This function was written to solve this issue: https://github.com/apache/burr/issues/28.
 
 
     :param state_subset_pre_update: The subset of state passed to the update() function
@@ -835,7 +835,7 @@ class Application(Generic[ApplicationStateType]):
         )
 
     # @telemetry.capture_function_usage # todo -- capture usage when we break this up into one that isn't called internally
-    # This will be doable when we move sequence ID to the beginning of the function https://github.com/DAGWorks-Inc/burr/pull/73
+    # This will be doable when we move sequence ID to the beginning of the function https://github.com/apache/burr/pull/73
     @_call_execute_method_pre_post(ExecuteMethod.step)
     def step(self, inputs: Optional[Dict[str, Any]] = None) -> Optional[Tuple[Action, dict, State]]:
         """Performs a single step, advancing the state machine along.
