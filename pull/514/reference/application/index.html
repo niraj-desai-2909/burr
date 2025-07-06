@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Actions" href="../actions/" /><link rel="prev" title="API reference" href="../" />
         <link rel="canonical" href="https://burr.dagworks.io/reference/application/" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Applications - Burr</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
@@ -376,7 +376,7 @@
 and not the <code class="docutils literal notranslate"><span class="pre">Application</span></code> class directly.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="burr.core.application.ApplicationBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationBuilder</span></span><a class="headerlink" href="#burr.core.application.ApplicationBuilder" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationBuilder</span></span><a class="headerlink" href="#burr.core.application.ApplicationBuilder" title="Link to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="burr.core.application.ApplicationBuilder.abuild">
 <span class="sig-name descname"><span class="pre">abuild</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.core.application.Application" title="burr.core.application.Application"><span class="pre">Application</span></a><span class="p"><span class="pre">[</span></span><span class="pre">StateType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.ApplicationBuilder.abuild" title="Link to this definition">¶</a></dt>
@@ -558,8 +558,9 @@ This can only be called once.</p>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.core.application.ApplicationBuilder" title="burr.core.application.ApplicationBuilder"><span class="pre">ApplicationBuilder</span></a><span class="p"><span class="pre">[</span></span><span class="pre">StateType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.ApplicationBuilder.with_graph" title="Link to this definition">¶</a></dt>
-<dd><p>Adds a prebuilt graph – this is an alternative to using the with_actions and with_transitions methods.
-While you will likely use with_actions and with_transitions, you may want this in a few cases:</p>
+<dd><p>Adds a prebuilt graph – this can work in addition to using with_actions and with_transitions methods.
+This will add all nodes + edges from a prebuilt graph to the current graph. Note that if you add two
+graphs (or a combination of graphs/nodes/edges), you will need to ensure that there are no node name conflicts.</p>
 <ol class="arabic simple">
 <li><p>You want to reuse the same graph object for different applications</p></li>
 <li><p>You want the logic that constructs the graph to be separate from that which constructs the application</p></li>
@@ -568,6 +569,27 @@ While you will likely use with_actions and with_transitions, you may want this i
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>graph</strong> – Graph object built with the <a class="reference internal" href="#burr.core.graph.GraphBuilder" title="burr.core.graph.GraphBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphBuilder</span></code></a></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The application builder for future chaining.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="burr.core.application.ApplicationBuilder.with_graphs">
+<span class="sig-name descname"><span class="pre">with_graphs</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">graphs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.core.application.ApplicationBuilder" title="burr.core.application.ApplicationBuilder"><span class="pre">ApplicationBuilder</span></a><span class="p"><span class="pre">[</span></span><span class="pre">StateType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.ApplicationBuilder.with_graphs" title="Link to this definition">¶</a></dt>
+<dd><p>Adds multiple prebuilt graphs – this just calls <a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_graph" title="burr.core.application.ApplicationBuilder.with_graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">with_graph</span></code></a>
+in a loop! See caveats in <a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_graph" title="burr.core.application.ApplicationBuilder.with_graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">with_graph</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>graphs</strong> – Graphs to add to the application</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The application builder for future chaining.</p>
@@ -821,7 +843,7 @@ Note that one transition can be terminal – the system doesn’t have</p>
 
 <dl class="py class" id="applicationref">
 <dt class="sig sig-object py" id="burr.core.application.Application">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">Application</span></span><span class="sig-paren">(</span>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">Application</span></span><span class="sig-paren">(</span>
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#burr.core.graph.Graph" title="burr.core.graph.Graph"><span class="pre">Graph</span></a></span></em>,</dd>
@@ -887,7 +909,7 @@ So if this starts at 0, the first one you will see will be 1.</p></li>
 <span class="sig-name descname"><span class="pre">aiterate</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -896,11 +918,12 @@ So if this starts at 0, the first one you will see will be 1.</p></li>
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../state/#burr.core.state.State" title="burr.core.state.State"><span class="pre">State</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.Application.aiterate" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a generator that calls step() in a row, enabling you to see the state
 of the system as it updates. This is the asynchronous version so it has no capability of t</p>
+<p>Note that tags must be specified by the form “&#64;tag:&lt;tag_name&gt;” to differentiate them from actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>halt_before</strong> – The list of actions to halt before execution of. It will halt on the first one.</p></li>
-<li><p><strong>halt_after</strong> – The list of actions to halt after execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_before</strong> – The list of actions/tags to halt before execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_after</strong> – The list of actions/tags to halt after execution of. It will halt on the first one.</p></li>
 <li><p><strong>inputs</strong> – Inputs to the action – this is if this action requires an input that is passed in from the outside world.
 Note that this is only used for the first iteration – subsequent iterations will not use this.</p></li>
 </ul>
@@ -917,7 +940,7 @@ allowed to have a return value.</p>
 <span class="sig-name descname"><span class="pre">arun</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -926,11 +949,12 @@ allowed to have a return value.</p>
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../state/#burr.core.state.State" title="burr.core.state.State"><span class="pre">State</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.Application.arun" title="Link to this definition">¶</a></dt>
 <dd><p>Runs your application through until completion, using async. Does
 not give access to the state along the way – if you want that, use iterate().</p>
+<p>Note that tags must be specified by the form “&#64;tag:&lt;tag_name&gt;” to differentiate them from actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>halt_before</strong> – The list of actions to halt before execution of. It will halt on the first one.</p></li>
-<li><p><strong>halt_after</strong> – The list of actions to halt after execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_before</strong> – The list of actions/tags to halt before execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_after</strong> – The list of actions/tags to halt after execution of. It will halt on the first one.</p></li>
 <li><p><strong>inputs</strong> – Inputs to the action – this is if this action requires an input that is passed in from the outside world</p></li>
 </ul>
 </dd>
@@ -942,7 +966,7 @@ not give access to the state along the way – if you want that, use iterate().<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="burr.core.application.Application.astep">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">astep</span></span><span class="sig-paren">(</span>
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">astep</span></span><span class="sig-paren">(</span>
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -962,6 +986,36 @@ requires an input that is passed in from the outside world</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="burr.core.application.Application.astream_iterate">
+<span class="sig-name descname"><span class="pre">astream_iterate</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">halt_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">halt_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../actions/#burr.core.action.AsyncStreamingResultContainer" title="burr.core.action.AsyncStreamingResultContainer"><span class="pre">AsyncStreamingResultContainer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.Application.astream_iterate" title="Link to this definition">¶</a></dt>
+<dd><p>Async version of stream_iterate. Produces an async generator that iterates
+through intermediate streams. See stream_iterate for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>halt_after</strong> – Action names/tags to halt after the action completes</p></li>
+<li><p><strong>halt_before</strong> – Action names/tags to halt after</p></li>
+<li><p><strong>inputs</strong> – Inputs to the first action run</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Async generator yielding tuples of (action, streaming_result_container)</p>
+</dd>
+<dt class="field-odd">Yield<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuples of (action, streaming_result_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="burr.core.application.Application.astream_result">
 <span class="sig-name descname"><span class="pre">astream_result</span></span><span class="sig-paren">(</span>
 
@@ -976,8 +1030,8 @@ requires an input that is passed in from the outside world</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>halt_after</strong> – The list of actions to halt after execution of. It will halt on the first one.</p></li>
-<li><p><strong>halt_before</strong> – The list of actions to halt before execution of. It will halt on the first one. Note that
+<li><p><strong>halt_after</strong> – The list of actions/tags to halt after execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_before</strong> – The list of actions/tags to halt before execution of. It will halt on the first one. Note that
 if this is met, the streaming result container will be empty (and return None) for the result, having an empty generator.</p></li>
 <li><p><strong>inputs</strong> – Inputs to the action – this is if this action requires an input that is passed in from the outside world</p></li>
 </ul>
@@ -1001,7 +1055,7 @@ the generator will be empty, and the <code class="docutils literal notranslate">
 and <a class="reference internal" href="#burr.core.application.Application.run" title="burr.core.application.Application.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run</span></code></a>. In this case, <cite>halt_before</cite> will indicate a <em>non</em> streaming action,
 which will be empty. Thus <code class="docutils literal notranslate"><span class="pre">halt_after</span></code> takes precedence – if it is met, the streaming result container will contain the result of the
 halt_after condition.</p>
-<p>The <a class="reference internal" href="../actions/#burr.core.action.StreamingResultContainer" title="burr.core.action.StreamingResultContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncStreamingResultContainer</span></code></a> is meant as a convenience – specifically this allows for
+<p>The <a class="reference internal" href="../actions/#burr.core.action.AsyncStreamingResultContainer" title="burr.core.action.AsyncStreamingResultContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncStreamingResultContainer</span></code></a> is meant as a convenience – specifically this allows for
 hooks, callbacks, etc… so you can take the control flow and still have state updated afterwards. Hooks/state update will be called after an exception
 is thrown during streaming, or the stream is completed. Note that it is undefined behavior to attempt to execute another action while a stream is in progress.</p>
 <p>To see how this works, let’s take the following action (simplified as a single-node workflow) as an example:</p>
@@ -1073,7 +1127,7 @@ was run.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.builder">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">builder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#burr.core.application.ApplicationBuilder" title="burr.core.application.ApplicationBuilder"><span class="pre">ApplicationBuilder</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.builder" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">builder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#burr.core.application.ApplicationBuilder" title="burr.core.application.ApplicationBuilder"><span class="pre">ApplicationBuilder</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.builder" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the application builder that was used to build this application.
 Note that this asusmes the application was built using the builder. Otherwise,</p>
 <dl class="field-list simple">
@@ -1085,7 +1139,7 @@ Note that this asusmes the application was built using the builder. Otherwise,</
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.context">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#burr.core.application.ApplicationContext" title="burr.core.application.ApplicationContext"><span class="pre">ApplicationContext</span></a></em><a class="headerlink" href="#burr.core.application.Application.context" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#burr.core.application.ApplicationContext" title="burr.core.application.ApplicationContext"><span class="pre">ApplicationContext</span></a></em><a class="headerlink" href="#burr.core.application.Application.context" title="Link to this definition">¶</a></dt>
 <dd><p>Gives the application context.
 This has information you need for the tracker, sequence ID, application, etc…</p>
 <dl class="field-list simple">
@@ -1097,7 +1151,7 @@ This has information you need for the tracker, sequence ID, application, etc…<
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.graph">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#burr.core.application.ApplicationGraph" title="burr.core.application.ApplicationGraph"><span class="pre">ApplicationGraph</span></a></em><a class="headerlink" href="#burr.core.application.Application.graph" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#burr.core.application.ApplicationGraph" title="burr.core.application.ApplicationGraph"><span class="pre">ApplicationGraph</span></a></em><a class="headerlink" href="#burr.core.application.Application.graph" title="Link to this definition">¶</a></dt>
 <dd><p>Application graph object – if you want to inspect, visualize, etc..
 this is what you want.</p>
 <dl class="field-list simple">
@@ -1123,7 +1177,7 @@ this is what you want.</p>
 <span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -1133,13 +1187,14 @@ this is what you want.</p>
 <dd><p>Returns a generator that calls step() in a row, enabling you to see the state
 of the system as it updates. Note this returns a generator, and also the final result
 (for convenience).</p>
+<p>Note that tags must be specified by the form “&#64;tag:&lt;tag_name&gt;” to differentiate them from actions.</p>
 <p>Note the nuance with halt_before and halt_after. halt_before conditions will take precedence to halt_after. Furthermore,
 a single iteration will always be executed prior to testing for any halting conditions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>halt_before</strong> – The list of actions to halt before execution of. It will halt prior to the execution of the first one it sees.</p></li>
-<li><p><strong>halt_after</strong> – The list of actions to halt after execution of. It will halt after the execution of the first one it sees.</p></li>
+<li><p><strong>halt_before</strong> – The list of actions/tags to halt before execution of. It will halt prior to the execution of the first one it sees.</p></li>
+<li><p><strong>halt_after</strong> – The list of actions/tags to halt after execution of. It will halt after the execution of the first one it sees.</p></li>
 <li><p><strong>inputs</strong> – Inputs to the action – this is if this action requires an input that is passed in from the outside world.
 Note that this is only used for the first iteration – subsequent iterations will not use this.</p></li>
 </ul>
@@ -1153,7 +1208,7 @@ Note that this is only used for the first iteration – subsequent iterations wi
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.parent_pointer">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent_pointer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParentPointer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.parent_pointer" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent_pointer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParentPointer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.parent_pointer" title="Link to this definition">¶</a></dt>
 <dd><p>Gives the parent pointer of an application (from where it was forked).
 This is None if it was not forked.</p>
 <p>Forking is the process of starting an application off of another.</p>
@@ -1166,7 +1221,7 @@ This is None if it was not forked.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.partition_key">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">partition_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.partition_key" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">partition_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.partition_key" title="Link to this definition">¶</a></dt>
 <dd><p>Partition key for the application. This is designed to add semantic meaning to
 the application, and be leveraged by persistence systems to select/find applications.</p>
 <p>Note this is optional – if it is not included, you will need to use a persister that
@@ -1190,7 +1245,7 @@ in your graph, but this will do the trick if you need it!</p>
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">halt_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -1199,11 +1254,12 @@ in your graph, but this will do the trick if you need it!</p>
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../state/#burr.core.state.State" title="burr.core.state.State"><span class="pre">State</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.Application.run" title="Link to this definition">¶</a></dt>
 <dd><p>Runs your application through until completion. Does
 not give access to the state along the way – if you want that, use iterate().</p>
+<p>Note that tags must be specified by the form “&#64;tag:&lt;tag_name&gt;” to differentiate them from actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>halt_before</strong> – The list of actions to halt before execution of. It will halt on the first one.</p></li>
-<li><p><strong>halt_after</strong> – The list of actions to halt after execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_before</strong> – The list of actions/tags to halt before execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_after</strong> – The list of actions/tags to halt after execution of. It will halt on the first one.</p></li>
 <li><p><strong>inputs</strong> – Inputs to the action – this is if this action requires an input that is passed in from the outside world.
 Note that this is only used for the first iteration – subsequent iterations will not use this.</p></li>
 </ul>
@@ -1216,7 +1272,7 @@ Note that this is only used for the first iteration – subsequent iterations wi
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.sequence_id">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sequence_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.sequence_id" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sequence_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.sequence_id" title="Link to this definition">¶</a></dt>
 <dd><p>gives the sequence ID of the current (next) action.
 This is incremented prior to every step. Any logging, etc… will use the current
 step’s sequence ID</p>
@@ -1229,7 +1285,7 @@ step’s sequence ID</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.spawning_parent_pointer">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spawning_parent_pointer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParentPointer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.spawning_parent_pointer" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spawning_parent_pointer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParentPointer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#burr.core.application.Application.spawning_parent_pointer" title="Link to this definition">¶</a></dt>
 <dd><p>Gives the parent pointer of an application (from where it was spawned).
 This is None if it was not spawned.</p>
 <p>Spawning is the process of launching an application from within
@@ -1243,7 +1299,7 @@ a step of another. This is used for recursive tracking.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.state">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../state/#burr.core.state.State" title="burr.core.state.State"><span class="pre">State</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#burr.core.application.Application.state" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../state/#burr.core.state.State" title="burr.core.state.State"><span class="pre">State</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#burr.core.application.Application.state" title="Link to this definition">¶</a></dt>
 <dd><p>Gives the state. Recall that state is purely immutable
 – anything you do with this state will not be persisted unless you
 subsequently call update_state.</p>
@@ -1281,6 +1337,50 @@ results along the way), or run() (if you just want the final state/results).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="burr.core.application.Application.stream_iterate">
+<span class="sig-name descname"><span class="pre">stream_iterate</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">halt_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">halt_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../actions/#burr.core.action.StreamingResultContainer" title="burr.core.action.StreamingResultContainer"><span class="pre">StreamingResultContainer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">ApplicationStateType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.application.Application.stream_iterate" title="Link to this definition">¶</a></dt>
+<dd><p>Produces an iterator that iterates through intermediate streams. You may want
+to use this in something like deep research mode in which:</p>
+<ol class="arabic simple">
+<li><p>The user queries for a result</p></li>
+<li><p>The application runs through a workflow</p></li>
+<li><dl class="simple">
+<dt>For each step of the workflow, the application</dt><dd><ol class="loweralpha simple">
+<li><p>Streams out an intermediate result</p></li>
+<li><p>Selects the next action/transition when the intermediate results is complete</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Note that there are control-flow complexities involved here – we need to ensure that the iterator
+is properly pushed along and the prior streaming results containers are all finished before going to the next one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>halt_after</strong> – Action names/tags to halt before</p></li>
+<li><p><strong>halt_before</strong> – _description_, defaults to None</p></li>
+<li><p><strong>inputs</strong> – _description_, defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Yield<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_description_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="burr.core.application.Application.stream_result">
 <span class="sig-name descname"><span class="pre">stream_result</span></span><span class="sig-paren">(</span>
 
@@ -1295,8 +1395,8 @@ results along the way), or run() (if you just want the final state/results).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>halt_after</strong> – The list of actions to halt after execution of. It will halt on the first one.</p></li>
-<li><p><strong>halt_before</strong> – The list of actions to halt before execution of. It will halt on the first one. Note that
+<li><p><strong>halt_after</strong> – The list of actions/tags to halt after execution of. It will halt on the first one.</p></li>
+<li><p><strong>halt_before</strong> – The list of actions/tags to halt before execution of. It will halt on the first one. Note that
 if this is met, the streaming result container will be empty (and return None) for the result, having an empty generator.</p></li>
 <li><p><strong>inputs</strong> – Inputs to the action – this is if this action requires an input that is passed in from the outside world</p></li>
 </ul>
@@ -1389,7 +1489,7 @@ was run.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="burr.core.application.Application.uid">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#burr.core.application.Application.uid" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#burr.core.application.Application.uid" title="Link to this definition">¶</a></dt>
 <dd><p>Unique ID for the application. This must be unique across <em>all</em> applications in a search space.
 This is used by persistence/tracking to ensure that applications have meanings.</p>
 <p>Every application has this – if not assigned, it will be randomly generated.</p>
@@ -1469,7 +1569,7 @@ for graphviz, instead pass <cite>format</cite> in <cite>engine_kwargs</cite> (e.
 
 <dl class="py class">
 <dt class="sig sig-object py" id="burr.core.application.ApplicationGraph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationGraph</span></span><span class="sig-paren">(</span>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationGraph</span></span><span class="sig-paren">(</span>
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
@@ -1488,7 +1588,7 @@ for graphviz, instead pass <cite>format</cite> in <cite>engine_kwargs</cite> (e.
 
 <dl class="py class">
 <dt class="sig sig-object py" id="burr.core.application.ApplicationContext">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationContext</span></span><span class="sig-paren">(</span>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationContext</span></span><span class="sig-paren">(</span>
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
@@ -1519,7 +1619,7 @@ action signature:</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="burr.core.application.ApplicationContext.get">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.core.application.ApplicationContext" title="burr.core.application.ApplicationContext"><span class="pre">ApplicationContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#burr.core.application.ApplicationContext.get" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.core.application.ApplicationContext" title="burr.core.application.ApplicationContext"><span class="pre">ApplicationContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#burr.core.application.ApplicationContext.get" title="Link to this definition">¶</a></dt>
 <dd><p>Provides the context-local application context.
 You can use this instead of declaring <cite>__context</cite> in an application.
 You really should only be using this if you’re wiring through multiple layers of abstraction
@@ -1542,7 +1642,7 @@ of situations.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">GraphBuilder</span></code> class is used to build a graph, and the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> class can be passed to the application builder.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="burr.core.graph.GraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.graph.</span></span><span class="sig-name descname"><span class="pre">GraphBuilder</span></span><a class="headerlink" href="#burr.core.graph.GraphBuilder" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.graph.</span></span><span class="sig-name descname"><span class="pre">GraphBuilder</span></span><a class="headerlink" href="#burr.core.graph.GraphBuilder" title="Link to this definition">¶</a></dt>
 <dd><p>GraphBuilder class. This allows you to construct a graph without considering application concerns.
 While you can (and at first, should) use the ApplicationBuidler (which has the same API), this is lower level
 and allows you to decouple concerns, reuse the same graph object, etc…</p>
@@ -1584,6 +1684,22 @@ it is a function-based-action), then you can use the <em>args</em> parameter. Th
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="burr.core.graph.GraphBuilder.with_graph">
+<span class="sig-name descname"><span class="pre">with_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#burr.core.graph.Graph" title="burr.core.graph.Graph"><span class="pre">Graph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.core.graph.GraphBuilder" title="burr.core.graph.GraphBuilder"><span class="pre">GraphBuilder</span></a></span></span><a class="headerlink" href="#burr.core.graph.GraphBuilder.with_graph" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an existing graph to the builder. Note that if you have any name clashes
+this will error out. This would happen if you add actions with the same name as actions
+that already exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>graph</strong> – The graph to add</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The application builder for future chaining.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="burr.core.graph.GraphBuilder.with_transitions">
 <span class="sig-name descname"><span class="pre">with_transitions</span></span><span class="sig-paren">(</span>
 
@@ -1615,7 +1731,7 @@ Note that one transition can be terminal – the system doesn’t have</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="burr.core.graph.Graph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.core.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span>
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
@@ -1630,6 +1746,12 @@ or indirectly through the ApplicationBuilder.</p>
 <dt class="sig sig-object py" id="burr.core.graph.Graph.get_action">
 <span class="sig-name descname"><span class="pre">get_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#burr.core.graph.Graph.get_action" title="Link to this definition">¶</a></dt>
 <dd><p>Gets an action object given the action name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="burr.core.graph.Graph.get_actions_by_tag">
+<span class="sig-name descname"><span class="pre">get_actions_by_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../actions/#burr.core.action.Action" title="burr.core.action.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#burr.core.graph.Graph.get_actions_by_tag" title="Link to this definition">¶</a></dt>
+<dd><p>Gets a list of actions given a tag. Note that, if no tags match the action a ValueError will be raised.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1748,6 +1870,7 @@ for graphviz, instead pass <cite>format</cite> in <cite>engine_kwargs</cite> (e.
 <li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_actions"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_actions()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_entrypoint"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_entrypoint()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_graph"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_graph()</span></code></a></li>
+<li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_graphs"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_graphs()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_hooks"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_hooks()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_identifiers"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_identifiers()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.ApplicationBuilder.with_parallel_executor"><code class="docutils literal notranslate"><span class="pre">ApplicationBuilder.with_parallel_executor()</span></code></a></li>
@@ -1764,6 +1887,7 @@ for graphviz, instead pass <cite>format</cite> in <cite>engine_kwargs</cite> (e.
 <li><a class="reference internal" href="#burr.core.application.Application.aiterate"><code class="docutils literal notranslate"><span class="pre">Application.aiterate()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.arun"><code class="docutils literal notranslate"><span class="pre">Application.arun()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.astep"><code class="docutils literal notranslate"><span class="pre">Application.astep()</span></code></a></li>
+<li><a class="reference internal" href="#burr.core.application.Application.astream_iterate"><code class="docutils literal notranslate"><span class="pre">Application.astream_iterate()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.astream_result"><code class="docutils literal notranslate"><span class="pre">Application.astream_result()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.builder"><code class="docutils literal notranslate"><span class="pre">Application.builder</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.context"><code class="docutils literal notranslate"><span class="pre">Application.context</span></code></a></li>
@@ -1778,6 +1902,7 @@ for graphviz, instead pass <cite>format</cite> in <cite>engine_kwargs</cite> (e.
 <li><a class="reference internal" href="#burr.core.application.Application.spawning_parent_pointer"><code class="docutils literal notranslate"><span class="pre">Application.spawning_parent_pointer</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.state"><code class="docutils literal notranslate"><span class="pre">Application.state</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.step"><code class="docutils literal notranslate"><span class="pre">Application.step()</span></code></a></li>
+<li><a class="reference internal" href="#burr.core.application.Application.stream_iterate"><code class="docutils literal notranslate"><span class="pre">Application.stream_iterate()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.stream_result"><code class="docutils literal notranslate"><span class="pre">Application.stream_result()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.uid"><code class="docutils literal notranslate"><span class="pre">Application.uid</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.application.Application.update_state"><code class="docutils literal notranslate"><span class="pre">Application.update_state()</span></code></a></li>
@@ -1796,11 +1921,13 @@ for graphviz, instead pass <cite>format</cite> in <cite>engine_kwargs</cite> (e.
 <li><a class="reference internal" href="#burr.core.graph.GraphBuilder"><code class="docutils literal notranslate"><span class="pre">GraphBuilder</span></code></a><ul>
 <li><a class="reference internal" href="#burr.core.graph.GraphBuilder.build"><code class="docutils literal notranslate"><span class="pre">GraphBuilder.build()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.graph.GraphBuilder.with_actions"><code class="docutils literal notranslate"><span class="pre">GraphBuilder.with_actions()</span></code></a></li>
+<li><a class="reference internal" href="#burr.core.graph.GraphBuilder.with_graph"><code class="docutils literal notranslate"><span class="pre">GraphBuilder.with_graph()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.graph.GraphBuilder.with_transitions"><code class="docutils literal notranslate"><span class="pre">GraphBuilder.with_transitions()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#burr.core.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul>
 <li><a class="reference internal" href="#burr.core.graph.Graph.get_action"><code class="docutils literal notranslate"><span class="pre">Graph.get_action()</span></code></a></li>
+<li><a class="reference internal" href="#burr.core.graph.Graph.get_actions_by_tag"><code class="docutils literal notranslate"><span class="pre">Graph.get_actions_by_tag()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.graph.Graph.get_next_node"><code class="docutils literal notranslate"><span class="pre">Graph.get_next_node()</span></code></a></li>
 <li><a class="reference internal" href="#burr.core.graph.Graph.visualize"><code class="docutils literal notranslate"><span class="pre">Graph.visualize()</span></code></a></li>
 </ul>
