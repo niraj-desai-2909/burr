@@ -54,7 +54,7 @@ github:
 
 notifications:
   commits:              commits@burr.apache.org
-  issues:               dev@burr.apache.org
-  pullrequests:         dev@burr.apache.org
-  discussions:          dev@burr.apache.org
-  jobs:                 dev@burr.apache.org
+  issues:               notifications@burr.apache.org
+  pullrequests:         notifications@burr.apache.org
+  discussions:          notifications@burr.apache.org
+  jobs:                 notifications@burr.apache.org
