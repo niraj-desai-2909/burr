@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Conditions/Transitions" href="../conditions/" /><link rel="prev" title="Serialization &amp; Deserialization" href="../serde/" />
         <link rel="canonical" href="https://burr.dagworks.io/reference/persister/" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>State Persistence - Burr</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=739e8c58" />
     <link rel="stylesheet" type="text/css" href="../../_static/testimonials.css?v=bd684830" />
     
@@ -29,24 +29,24 @@
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
@@ -208,7 +208,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
   
-  
   <span class="sidebar-brand-text">Burr</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
@@ -351,7 +350,7 @@
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/dagworks-inc/burr/edit/main/docs/reference/persister.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/dagworks-inc/burr/edit/main/docs/reference/persister.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -1724,7 +1723,16 @@ before the action was applied.</p></li>
 
 <dl class="py class" id="asyncpostgresref">
 <dt class="sig sig-object py" id="burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.integrations.persisters.b_asyncpg.</span></span><span class="sig-name descname"><span class="pre">AsyncPostgreSQLPersister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'burr_state'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serde_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">burr.integrations.persisters.b_asyncpg.</span></span><span class="sig-name descname"><span class="pre">AsyncPostgreSQLPersister</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'burr_state'</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">serde_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister" title="Link to this definition">¶</a></dt>
 <dd><p>Class for async PostgreSQL persistence of state.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1734,6 +1742,12 @@ gets invoked). Therefore, you are responsible for closing the connection yoursel
 We suggest to use the persister either as a context manager through the <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> clause or
 using the method <code class="docutils literal notranslate"><span class="pre">.cleanup()</span></code>.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you intend to use parallelism features or need to share this persister across multiple tasks,
+you should initialize it with a connection pool (set <code class="docutils literal notranslate"><span class="pre">use_pool=True</span></code> in <code class="docutils literal notranslate"><span class="pre">from_values</span></code>).
+Direct connections cannot be shared across different tasks and may cause errors in concurrent scenarios.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The implementation relies on the popular asyncpg library: <a class="reference external" href="https://github.com/MagicStack/asyncpg">https://github.com/MagicStack/asyncpg</a></p>
@@ -1741,10 +1755,10 @@ using the method <code class="docutils literal notranslate"><span class="pre">.c
 explaining why a new implementation, performance review and comparison to aiopg (async interface of psycopg2).</p>
 </div>
 <p>To try it out locally with docker – here’s a command – change the values as appropriate.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>local-psql<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># container name</span>
-<span class="w">           </span>-v<span class="w"> </span>local_psql_data:/SOME/FILE_PATH/<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># mounting a volume for data persistence</span>
-<span class="w">           </span>-p<span class="w"> </span><span class="m">54320</span>:5432<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># port mapping</span>
-<span class="w">           </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>my_password<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># superuser password</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>local-psql<span class="w"> </span><span class="se">\\</span><span class="w">  </span><span class="c1"># container name</span>
+<span class="w">           </span>-v<span class="w"> </span>local_psql_data:/SOME/FILE_PATH/<span class="w"> </span><span class="se">\\</span><span class="w">  </span><span class="c1"># mounting a volume for data persistence</span>
+<span class="w">           </span>-p<span class="w"> </span><span class="m">54320</span>:5432<span class="w"> </span><span class="se">\\</span><span class="w">  </span><span class="c1"># port mapping</span>
+<span class="w">           </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>my_password<span class="w"> </span><span class="se">\\</span><span class="w">  </span><span class="c1"># superuser password</span>
 <span class="w">           </span>-d<span class="w"> </span>postgres<span class="w">  </span><span class="c1"># database name</span>
 </pre></div>
 </div>
@@ -1758,7 +1772,8 @@ explaining why a new implementation, performance review and comparison to aiopg 
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">pool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'burr_state'</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">serde_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
@@ -1768,8 +1783,10 @@ explaining why a new implementation, performance review and comparison to aiopg 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>connection</strong> – the connection to the PostgreSQL database.</p></li>
+<li><p><strong>connection</strong> – the connection to the PostgreSQL database (optional if pool is provided)</p></li>
+<li><p><strong>pool</strong> – a connection pool to use instead of a direct connection (optional if connection is provided)</p></li>
 <li><p><strong>table_name</strong> – the table name to store things under.</p></li>
+<li><p><strong>serde_kwargs</strong> – kwargs for state serialization/deserialization</p></li>
 </ul>
 </dd>
 </dl>
@@ -1779,6 +1796,31 @@ explaining why a new implementation, performance review and comparison to aiopg 
 <dt class="sig sig-object py" id="burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.cleanup">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.cleanup" title="Link to this definition">¶</a></dt>
 <dd><p>Closes the connection to the database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.copy" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a copy of this persister.</p>
+<p>If using a pool, returns a new persister that will acquire its own connection from the pool.
+If using a direct connection, just returns a new persister with the same connection (won’t work for async parallelism)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.create_pool">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_pool</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">pool_kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Pool</span></span></span><a class="headerlink" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.create_pool" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a connection pool that can be shared across persisters.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1810,6 +1852,8 @@ explaining why a new implementation, performance review and comparison to aiopg 
 <dd><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'burr_state'</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">use_pool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">pool_kwargs</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister" title="burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister"><span class="pre">AsyncPostgreSQLPersister</span></a></span></span><a class="headerlink" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.from_values" title="Link to this definition">¶</a></dt>
@@ -1823,6 +1867,8 @@ explaining why a new implementation, performance review and comparison to aiopg 
 <li><p><strong>host</strong> – the host of the PostgreSQL database.</p></li>
 <li><p><strong>port</strong> – the port of the PostgreSQL database.</p></li>
 <li><p><strong>table_name</strong> – the table name to store things under.</p></li>
+<li><p><strong>use_pool</strong> – whether to use a connection pool (True) or a direct connection (False)</p></li>
+<li><p><strong>pool_kwargs</strong> – additional kwargs to pass to the pool creation</p></li>
 </ul>
 </dd>
 </dl>
@@ -2247,6 +2293,8 @@ It inherits from the AsyncBaseStatePersister class.</p>
 <li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister</span></code></a><ul>
 <li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.__init__"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.cleanup"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.cleanup()</span></code></a></li>
+<li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.copy"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.copy()</span></code></a></li>
+<li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.create_pool"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.create_pool()</span></code></a></li>
 <li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.create_table"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.create_table()</span></code></a></li>
 <li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.from_config"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.from_config()</span></code></a></li>
 <li><a class="reference internal" href="#burr.integrations.persisters.b_asyncpg.AsyncPostgreSQLPersister.from_values"><code class="docutils literal notranslate"><span class="pre">AsyncPostgreSQLPersister.from_values()</span></code></a></li>
@@ -2286,6 +2334,6 @@ It inherits from the AsyncBaseStatePersister class.</p>
 </div><script src="../../_static/documentation_options.js?v=187304be"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

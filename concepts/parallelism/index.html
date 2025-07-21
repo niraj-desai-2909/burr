@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Recursive Applications" href="../recursion/" /><link rel="prev" title="Additional Visibility" href="../additional-visibility/" />
         <link rel="canonical" href="https://burr.dagworks.io/concepts/parallelism/" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>Parallelism - Burr</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=739e8c58" />
     <link rel="stylesheet" type="text/css" href="../../_static/testimonials.css?v=bd684830" />
     
@@ -29,24 +29,24 @@
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
@@ -208,7 +208,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
   
-  
   <span class="sidebar-brand-text">Burr</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
@@ -351,7 +350,7 @@
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/dagworks-inc/burr/edit/main/docs/concepts/parallelism.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/dagworks-inc/burr/edit/main/docs/concepts/parallelism.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -928,6 +927,94 @@ LLM might come up with a solution.</p>
 </ol>
 </section>
 </section>
+<section id="async-parallelism">
+<h2>Async Parallelism<a class="headerlink" href="#async-parallelism" title="Link to this heading">¶</a></h2>
+<p>Burr also supports asynchronous parallelism. When working in an async context, you need to make a few adjustments to your parallel actions:</p>
+<section id="make-your-methods-async">
+<h3>1. Make your methods async<a class="headerlink" href="#make-your-methods-async" title="Link to this heading">¶</a></h3>
+<p>The <cite>action</cite>, <cite>states</cite>, <cite>reduce</cite>, and other methods should be defined as async:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AsyncMapActionsAndStatesExample</span><span class="p">(</span><span class="n">MapActionsAndStates</span><span class="p">):</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">Action</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="c1"># Yield multiple model components to run in parallel</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">model_config</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_configs</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">ModelResponse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">model_config</span><span class="p">)</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;model_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">states</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">State</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="c1"># Prepare the state with the user query</span>
+        <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;What is the meaning of life?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;What is the airspeed velocity of an unladen swallow?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;What is the best way to cook a steak?&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="k">yield</span> <span class="n">state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">states</span><span class="p">:</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">State</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+        <span class="c1"># Collect all model responses</span>
+        <span class="n">all_responses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">sub_state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+            <span class="n">model_key</span> <span class="o">=</span> <span class="n">sub_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model_key&quot;</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">sub_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model_key</span><span class="p">,</span> <span class="p">[])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">all_responses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ensemble_responses</span><span class="o">=</span><span class="n">all_responses</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="implement-the-is-async-method">
+<h3>2. Implement the is_async method<a class="headerlink" href="#implement-the-is-async-method" title="Link to this heading">¶</a></h3>
+<p>You must override the <cite>is_async</cite> method to return <cite>True</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AsyncMapActionsAndStatesExample</span><span class="p">(</span><span class="n">MapActionsAndStates</span><span class="p">):</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_async</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># ... other methods ...</span>
+</pre></div>
+</div>
+</section>
+<section id="use-async-persisters-with-connection-pools">
+<h3>3. Use async persisters with connection pools<a class="headerlink" href="#use-async-persisters-with-connection-pools" title="Link to this heading">¶</a></h3>
+<p>When using state persistence with async parallelism, make sure to use the async version of persisters and initialize them with a connection pool:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">burr.integrations.persisters.b_asyncpg</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncPGPersister</span>
+
+<span class="c1"># Create an async persister with a connection pool</span>
+<span class="n">persister</span> <span class="o">=</span> <span class="n">AsyncPGPersister</span><span class="o">.</span><span class="n">from_values</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;burr&quot;</span><span class="p">,</span>
+    <span class="n">use_pool</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Important for parallelism!</span>
+<span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ApplicationBuilder</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">with_state_persister</span><span class="p">(</span><span class="n">persister</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">with_action</span><span class="p">(</span>
+        <span class="n">async_parallel_action</span><span class="o">=</span><span class="n">AsyncMapActionsAndStatesExample</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">abuild</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Connection pools are crucial for handling concurrent operations. Direct connections cannot be shared across different tasks and may cause errors in concurrent scenarios.</p>
+<p>Remember to properly clean up your async persisters when you’re done with them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using as a context manager</span>
+<span class="k">async</span> <span class="k">with</span> <span class="n">AsyncPGPersister</span><span class="o">.</span><span class="n">from_values</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">use_pool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">persister</span><span class="p">:</span>
+    <span class="c1"># Use persister here</span>
+
+<span class="c1"># Or manual cleanup</span>
+<span class="n">persister</span> <span class="o">=</span> <span class="n">AsyncPGPersister</span><span class="o">.</span><span class="n">from_values</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">use_pool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Use persister here</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">persister</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h2>
 <p>This is in an experimental release phase. While we anticipate the API to be stable, we reserve the right to make slight changes (and will obviously add new features).
@@ -1024,6 +1111,12 @@ Caveats:</p>
 <li><a class="reference internal" href="#inter-action-communication">Inter-action communication</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#async-parallelism">Async Parallelism</a><ul>
+<li><a class="reference internal" href="#make-your-methods-async">1. Make your methods async</a></li>
+<li><a class="reference internal" href="#implement-the-is-async-method">2. Implement the is_async method</a></li>
+<li><a class="reference internal" href="#use-async-persisters-with-connection-pools">3. Use async persisters with connection pools</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
@@ -1039,6 +1132,6 @@ Caveats:</p>
 </div><script src="../../_static/documentation_options.js?v=187304be"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

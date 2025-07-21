@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Planned Capabilities" href="../planned-capabilities/" /><link rel="prev" title="Recursive Applications" href="../recursion/" />
         <link rel="canonical" href="https://burr.dagworks.io/concepts/sync-vs-async/" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>Sync vs Async Applications - Burr</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=739e8c58" />
     <link rel="stylesheet" type="text/css" href="../../_static/testimonials.css?v=bd684830" />
     
@@ -29,24 +29,24 @@
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   --color-announcement-background: #ffba00;
   --color-announcement-text: #091E42;
   
@@ -208,7 +208,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
   
-  
   <span class="sidebar-brand-text">Burr</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
@@ -351,7 +350,7 @@
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/dagworks-inc/burr/edit/main/docs/concepts/sync-vs-async.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/dagworks-inc/burr/edit/main/docs/concepts/sync-vs-async.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -392,6 +391,28 @@
 <li><p><a class="reference internal" href="../../reference/application/#burr.core.application.Application.stream_result" title="burr.core.application.Application.stream_result"><code class="xref py py-meth docutils literal notranslate"><span class="pre">.stream_result()</span></code></a></p></li>
 </ul>
 </li>
+</ol>
+</section>
+<section id="checklist-for-async-applications">
+<h2>Checklist for Async Applications<a class="headerlink" href="#checklist-for-async-applications" title="Link to this heading">¶</a></h2>
+<p>When building asynchronous applications with Burr, ensure you:</p>
+<ol class="arabic simple">
+<li><p><strong>Use async action implementations</strong>:
+* Implement <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">run</span></code> methods in your actions
+* Override the <code class="docutils literal notranslate"><span class="pre">is_async</span></code> property to return <code class="docutils literal notranslate"><span class="pre">True</span></code> in all async class-based actions
+* Use <code class="docutils literal notranslate"><span class="pre">await</span></code> for all I/O operations inside your actions</p></li>
+<li><p><strong>Use async builder and application methods</strong>:
+* Use <code class="docutils literal notranslate"><span class="pre">.abuild()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.build()</span></code>
+* Use <code class="docutils literal notranslate"><span class="pre">.arun()</span></code>, <code class="docutils literal notranslate"><span class="pre">.aiterate()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.astream_result()</span></code> instead of their sync counterparts</p></li>
+<li><p><strong>Use async hooks and persisters</strong>:
+* Implement async hooks with <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> methods
+* Use async persisters (e.g., <code class="docutils literal notranslate"><span class="pre">AsyncPGPersister</span></code> instead of <code class="docutils literal notranslate"><span class="pre">PGPersister</span></code>)
+* Properly clean up async resources using context managers or explicit cleanup calls</p></li>
+<li><p><strong>For parallel actions</strong>:
+* Make <code class="docutils literal notranslate"><span class="pre">actions</span></code>, <code class="docutils literal notranslate"><span class="pre">states</span></code>, and <code class="docutils literal notranslate"><span class="pre">reduce</span></code> methods async
+* Override <code class="docutils literal notranslate"><span class="pre">is_async</span></code> to return <code class="docutils literal notranslate"><span class="pre">True</span></code>
+* Use <code class="docutils literal notranslate"><span class="pre">AsyncGenerator</span></code> return types
+* Use async persisters with connection pools</p></li>
 </ol>
 </section>
 <section id="comparison">
@@ -539,6 +560,7 @@ builder</p></td>
             <ul>
 <li><a class="reference internal" href="#">Sync vs Async Applications</a><ul>
 <li><a class="reference internal" href="#tl-dr">TL;DR</a></li>
+<li><a class="reference internal" href="#checklist-for-async-applications">Checklist for Async Applications</a></li>
 <li><a class="reference internal" href="#comparison">Comparison</a></li>
 <li><a class="reference internal" href="#nuances-of-sync-async-together">Nuances of Sync + Async together</a></li>
 </ul>
@@ -555,6 +577,6 @@ builder</p></td>
 </div><script src="../../_static/documentation_options.js?v=187304be"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>
