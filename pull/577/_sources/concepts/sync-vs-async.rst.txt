@@ -22,7 +22,7 @@ Burr gives you the ability to write synchronous (standard python) and asynchrono
    * :py:meth:`.stream_result() <.Application.stream_result()>`
 
 Checklist for Async Applications
--------------------------------
+-----------------------------------
 
 When building asynchronous applications with Burr, ensure you:
 
