@@ -1,8 +1,8 @@
 .. _parallelism:
 
-===========
+=================
 Parallelism
-===========
+=================
 
 Burr can run multiple actions in parallel. Each parallel branch can contain one or more actions, and different branches can have different actions. This is useful when:
 
@@ -33,7 +33,6 @@ With the low-level API, you can manually determine how parallel actions or subgr
 
 Overview
 ========
-
 Burr allows you to define parallel actions by expanding a single action into multiple individual actions or subgraphs which
 will execute them all and joining the results. This is a simple `map-reduce <https://en.wikipedia.org/wiki/MapReduce>`_ pattern.
 
@@ -130,7 +129,6 @@ Then, to run the application:
 
 Run different actions over the same state
 -----------------------------------------
-
 
 For case (2) (mapping actions over the same state) you implement the ``MapActions`` class, doing the following:
 
@@ -602,7 +600,7 @@ The basics (code not present now):
 
 
 Inter-action communication
---------------------------
+---------------------------
 
 Say you have two LLMs answering the same question -- one that gives immediate results back to the user
 as they come in, and another that thinks for a while to give more sophisticated results. The user then has the option to say they're happy
@@ -619,12 +617,12 @@ To do this, you would:
 
 
 Async Parallelism
-================
+==================
 
 Burr also supports asynchronous parallelism. When working in an async context, you need to make a few adjustments to your parallel actions:
 
 1. Make your methods async
---------------------------
+---------------------------
 
 The `action`, `states`, `reduce`, and other methods should be defined as async:
 
@@ -657,7 +655,7 @@ The `action`, `states`, `reduce`, and other methods should be defined as async:
             return state.update(ensemble_responses=all_responses)
 
 2. Implement the is_async method
--------------------------------
+--------------------------------
 
 You must override the `is_async` method to return `True`:
 
@@ -672,7 +670,7 @@ You must override the `is_async` method to return `True`:
         # ... other methods ...
 
 3. Use async persisters with connection pools
---------------------------------------------
+----------------------------------------------
 
 When using state persistence with async parallelism, make sure to use the async version of persisters and initialize them with a connection pool:
 
