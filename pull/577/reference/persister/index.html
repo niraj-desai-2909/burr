@@ -1457,18 +1457,17 @@ so this is an attempt to fix that in a backwards compatible way.</p>
 If a sequence ID is provided, it will attempt to fetch the specific state at that sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>partition_key</strong> – The partition key. Defaults to <cite>None</cite>. <strong>Note:</strong> The partition key defaults to <cite>None</cite>. If a partition key was used during saving, it must be provided</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partition_key</strong> – The partition key. Defaults to <cite>None</cite>.
+<strong>Note:</strong> The partition key defaults to <cite>None</cite>. If a partition key was used during saving,
+it must be provided consistently during retrieval, or no results will be returned.</p></li>
+<li><p><strong>app_id</strong> – Application UID to read from.</p></li>
+<li><p><strong>sequence_id</strong> – (Optional) The sequence ID to retrieve a specific state. If not provided,
+the latest state is returned.</p></li>
+</ul>
 </dd>
-</dl>
-<p>consistently during retrieval, or no results will be returned.
-:param app_id: Application UID to read from.
-:param sequence_id: (Optional) The sequence ID to retrieve a specific state. If not provided,</p>
-<blockquote>
-<div><p>the latest state is returned.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The state data if found, otherwise None.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The state data if found, otherwise None.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1491,22 +1490,21 @@ If a sequence ID is provided, it will attempt to fetch the specific state at tha
 <dd><p>Save the state data to the MongoDB database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>partition_key</strong> – the partition key. Note this could be None, but it’s up to the persistor to whether</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partition_key</strong> – the partition key. Note this could be None, but it’s up to the persistor
+to whether that is a valid value it can handle. If a partition key was used
+during saving, it must be provided consistently during retrieval, or no
+results will be returned.</p></li>
+<li><p><strong>app_id</strong> – Application UID to write with.</p></li>
+<li><p><strong>sequence_id</strong> – Sequence ID of the last executed step.</p></li>
+<li><p><strong>position</strong> – The action name that was implemented.</p></li>
+<li><p><strong>state</strong> – The current state of the application.</p></li>
+<li><p><strong>status</strong> – The status of this state, either “completed” or “failed”. If “failed”, the state
+is what it was before the action was applied.</p></li>
+</ul>
 </dd>
-</dl>
-<p>that is a valid value it can handle. If a partition key was used during saving, it must be provided
-consistently during retrieval, or no results will be returned.
-:param app_id: Application UID to write with.
-:param sequence_id: Sequence ID of the last executed step.
-:param position: The action name that was implemented.
-:param state: The current state of the application.
-:param status: The status of this state, either “completed” or “failed”. If “failed”, the state is what it was</p>
-<blockquote>
-<div><p>before the action was applied.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
