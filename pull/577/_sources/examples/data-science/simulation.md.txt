@@ -5,8 +5,8 @@ The user then manages the state, which becomes the input to the next time step, 
 as output data to analyze. Burr provides a simple way for you to construct, manage, and
 introspect the state of your simulation.
 
-This example is a WIP -- see the placeholder/example sketch in the [repository](https://github.com/DAGWorks-Inc/burr/tree/main/examples/simulation).
-We're actively looking for contributors + ideas via [this issue](https://github.com/DAGWorks-Inc/burr/issues/136) to track.
+This example is a WIP -- see the placeholder/example sketch in the [repository](https://github.com/apache/burr/tree/main/examples/simulation).
+We're actively looking for contributors + ideas via [this issue](https://github.com/apache/burr/issues/136) to track.
 
 
 For instance:
@@ -32,7 +32,7 @@ This is a special case of time-series forecasting, in which one wants to simulat
 - `construct_portfolio` - uses the forecast to construct a portfolio
 - `evaluate_portfolio` - evaluates the portfolio
 
-Each one of these could be a DAG using [Hamilton](https://github.com/dagworks-inc/hamilton), or running any custom code.
+Each one of these could be a DAG using [Hamilton](https://github.com/apache/hamilton), or running any custom code.
 
 ## Multi-agent simulation
 
