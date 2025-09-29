@@ -43,11 +43,11 @@ Test Case Creation Example
 --------------------------
 Video walkthrough:
 
-.. raw:: html
-
-    <div>
-      <iframe width="800" height="455" src="https://www.youtube.com/embed/9U_CMsh0VBI?si=Z-powULn_RO2-2pB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+.. image:: /_static/video_9U_CMsh0VBI_thumbnail.jpg
+   :target: https://www.youtube.com/watch?v=9U_CMsh0VBI
+   :alt: Creating Tests Video
+   :align: center
+   :width: 600px
 
 
 Steps:
