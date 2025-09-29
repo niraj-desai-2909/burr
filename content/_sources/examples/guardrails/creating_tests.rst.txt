@@ -16,7 +16,7 @@ is what we're showing you how to do here.
 
 Need to know more about pytest?
 -------------------------------
-For a more pytest walkthrough and example, see the `pytest example <https://github.com/DAGWorks-Inc/burr/tree/main/examples/pytest>`_,
+For a more pytest walkthrough and example, see the `pytest example <https://github.com/apache/burr/tree/main/examples/pytest>`_,
 that explains what pytest is, how to evaluate more than just a single assert statement, how to aggregate results, etc.
 
 
@@ -54,7 +54,7 @@ Steps:
       --sequence-id 0 \
       --target-file-name /tmp/test-case.json
 
-See `github repository example <https://github.com/DAGWorks-Inc/burr/tree/main/examples/test-case-creation>`_
+See `github repository example <https://github.com/apache/burr/tree/main/examples/test-case-creation>`_
 for an example.
 
 Note (1): if you have custom serialization/deserialization logic, you will want to pass in `--serde-module` to the
