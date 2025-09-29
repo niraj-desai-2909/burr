@@ -116,9 +116,11 @@ will then dictate where the new application state is ultimately stored.
 For a quick overview of using it, Ashis from `PeanutRobotics <https://peanutrobotics.com>`_ has kindly submitted a
 video on how they use this feature:
 
-.. raw:: html
-
-    <iframe width="800" height="455" src="https://www.youtube.com/embed/98vxhIcE6NI?si=w1vMHr9QUxjlVVgm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+.. image:: /_static/video_98vxhIcE6NI_thumbnail.jpg
+   :target: https://www.youtube.com/watch?v=98vxhIcE6NI
+   :alt: State Persistence Video
+   :align: center
+   :width: 600px
 
 
 Writing state
