@@ -6,10 +6,11 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
+import subprocess
 
 project = "Burr"
-copyright = "2024, Elijah ben Izzy, Stefan Krawczyk"
-author = "Elijah ben Izzy, Stefan Krawczyk"
+copyright = "2025, Apache Software Foundation"
+author = "Apache Burr PMC"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -40,7 +41,7 @@ html_css_files = [
 
 html_title = "Burr"
 html_theme_options = {
-    "source_repository": "https://github.com/dagworks-inc/burr",
+    "source_repository": "https://github.com/apache/burr",
     "source_branch": "main",
     "source_directory": "docs/",
     "light_css_variables": {
@@ -62,7 +63,12 @@ python_maximum_signature_line_length = 100
 python_use_unqualified_type_names = True
 
 # -- for sitemap extension
-html_baseurl = "https://burr.dagworks.io/"  # TODO -- update this
+GIT_BRANCH_OUTPUT = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"])
+current_branch = GIT_BRANCH_OUTPUT.decode().strip()
+if current_branch == "main":
+    html_baseurl = "https://burr.apache.org/"
+else:
+    html_baseurl = "https://burr.staged.apache.org/"
 html_extra_path = ["robots.txt"]
 sitemap_locales = [None]
 sitemap_url_scheme = "{link}"

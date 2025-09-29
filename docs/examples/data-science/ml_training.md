@@ -5,7 +5,7 @@ to gaussian processes, ``burr`` is a simple way to implement robust, failure-res
 track of hyperparameters and metrics and feeding these into a decision function to determine where to look next.
 ``burr``'s state machine can help you write and manage that process.
 
-This is a WIP! Please see the placeholder/example sketch in the [repository](https://github.com/DAGWorks-Inc/burr/tree/main/examples/ml-training) and contribute back if you have ideas via associated issue [here](https://github.com/DAGWorks-Inc/burr/issues/138).
+This is a WIP! Please see the placeholder/example sketch in the [repository](https://github.com/apache/burr/tree/main/examples/ml-training) and contribute back if you have ideas via associated issue [here](https://github.com/apache/burr/issues/138).
 
 ## High-level view
 
@@ -40,7 +40,7 @@ you can use Burr hooks to log metrics, visualize, etc... at each step. This allo
 
 While some models are trained in a single-shot and shipped to production, many require human input.
 Burr can be used to express training, then checkpoint/pause the state while a human is evaluating it,
-and have their input (e.g. go/no-go) passed in as an [input parameter](https://burr.dagworks.io/concepts/actions/#runtime-inputs).
+and have their input (e.g. go/no-go) passed in as an [input parameter](https://burr.apache.org/concepts/actions/#runtime-inputs).
 
 Note that this still requires a scheduling tool (say a task executor that runs until the next human input is needed),
 but that task executor does not need to be complicated (all it needs to do is run a job when prompted, and possibly on a chron schedule).

@@ -20,7 +20,7 @@ And so on. These can be arbitrarily complex and nested, allowing agents consisti
 .. image:: ../_static/meme.png
     :align: center
 
-You can find an example `here <https://github.com/dagworks-inc/burr/tree/main/examples/recursive>`_.
+You can find an example `here <https://github.com/apache/burr/tree/main/examples/recursive>`_.
 
 --------
 Tracking

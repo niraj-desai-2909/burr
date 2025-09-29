@@ -29,7 +29,7 @@ Here's a video walkthrough of how to add custom type and field serialization/des
         <iframe width="800" height="455" src="https://www.youtube.com/embed/Squ5IAeQBzc?si=6l6e0SJ0EqEjAW2K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
-See `this example <https://github.com/DAGWorks-Inc/burr/tree/main/examples/custom-serde>`_ for the notebook.
+See `this example <https://github.com/apache/burr/tree/main/examples/custom-serde>`_ for the notebook.
 
 Type based serialization/deserialization
 _____________________________________________________

@@ -11,7 +11,7 @@ Typing State
     the state of your application prior to execution (for use by a web-server/other typing system). This is done
     through the use of pydantic schemas.
 
-For a quick-start guide, see the `example <https://github.com/DAGWorks-Inc/burr/tree/main/examples/typed-state>`_
+For a quick-start guide, see the `example <https://github.com/apache/burr/tree/main/examples/typed-state>`_
 
 
 Burr has two approaches to specifying a schema for a state. These can work together as long as they specify clashing state:
