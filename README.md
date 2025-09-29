@@ -7,14 +7,8 @@
 ![PyPI Downloads](https://static.pepy.tech/badge/burr)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/apache/burr)](https://github.com/apache/burr/pulse)
 [![X](https://img.shields.io/badge/follow-%40burr_framework-1DA1F2?logo=x&style=social)](https://twitter.com/burr_framework)
-<a target="_blank" href="https://linkedin.com/showcase/dagworks-inc" style="background:none">
-  <img src="https://img.shields.io/badge/DAGWorks-Follow-purple.svg?logo=linkedin" />
-</a>
 <a href="https://twitter.com/burr_framework" target="_blank">
   <img src="https://img.shields.io/badge/burr_framework-Follow-purple.svg?logo=X"/>
-</a>
-<a href="https://twitter.com/dagworks" target="_blank">
-  <img src="https://img.shields.io/badge/DAGWorks-Follow-purple.svg?logo=X"/>
 </a>
 
 </div>
