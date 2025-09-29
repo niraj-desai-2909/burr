@@ -42,11 +42,11 @@ Customizing Serialization/Deserialization
 -----------------------------------------
 Here's a video walkthrough of how to add custom type and field serialization/deserialization:
 
-.. raw:: html
-
-    <div>
-        <iframe width="800" height="455" src="https://www.youtube.com/embed/Squ5IAeQBzc?si=6l6e0SJ0EqEjAW2K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+.. image:: /_static/video_Squ5IAeQBzc_thumbnail.jpg
+   :target: https://www.youtube.com/watch?v=Squ5IAeQBzc
+   :alt: Serialization Video
+   :align: center
+   :width: 600px
 
 See `this example <https://github.com/apache/burr/tree/main/examples/custom-serde>`_ for the notebook.
 

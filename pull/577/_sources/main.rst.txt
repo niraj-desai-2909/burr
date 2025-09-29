@@ -27,9 +27,11 @@ For a quick overview of Apache Burr, watch `this walkthrough <https://www.loom.c
 or read `our blog post <https://blog.dagworks.io/p/burr-develop-stateful-ai-applications?r=2cg5z1&utm_campaign=post&utm_medium=web>`_. The following video is
 a longer demo of building a simple chatbot application with Apache Burr using `this notebook <https://github.com/apache/burr/blob/main/examples/conversational-rag/simple_example/notebook.ipynb>`_:
 
-.. raw:: html
-
-   <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe width="800" height="455" src="https://www.youtube.com/embed/rEZ4oDN0GdU?si=6RvExhQVsAyNd8Ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+.. image:: _static/burr_video_thumbnail.jpg
+   :target: https://www.youtube.com/watch?v=rEZ4oDN0GdU
+   :alt: Apache Burr Demo Video
+   :align: center
+   :width: 600px
 
 For more details about how Apache Burr works, what problems it solves, and how to use it, read on!
 
